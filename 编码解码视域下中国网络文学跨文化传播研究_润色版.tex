@@ -1,0 +1,306 @@
+% !TEX program = xelatex
+\documentclass[12pt, a4paper]{article}
+
+% ===== 中文支持 =====
+\usepackage{fontspec}
+\setmainfont{TeX Gyre Termes}
+\newfontfamily\cjkfont{Noto Serif CJK SC}[Script=CJK, Language=Chinese Simplified, Scale=1.0]
+\newfontfamily\cjksans{Noto Sans CJK SC}[Script=CJK, Language=Chinese Simplified, Scale=1.0]
+
+\XeTeXinterchartokenstate=1
+\newXeTeXintercharclass\CJKclass
+\count255="4E00 \loop\ifnum\count255<"A000 \XeTeXcharclass\count255=\CJKclass \advance\count255 by 1 \repeat
+\count255="3400 \loop\ifnum\count255<"4DC0 \XeTeXcharclass\count255=\CJKclass \advance\count255 by 1 \repeat
+\count255="F900 \loop\ifnum\count255<"FB00 \XeTeXcharclass\count255=\CJKclass \advance\count255 by 1 \repeat
+\count255="3000 \loop\ifnum\count255<"3040 \XeTeXcharclass\count255=\CJKclass \advance\count255 by 1 \repeat
+\count255="FF00 \loop\ifnum\count255<"FFF0 \XeTeXcharclass\count255=\CJKclass \advance\count255 by 1 \repeat
+\count255="2000 \loop\ifnum\count255<"2070 \XeTeXcharclass\count255=\CJKclass \advance\count255 by 1 \repeat
+\count255="3300 \loop\ifnum\count255<"3400 \XeTeXcharclass\count255=\CJKclass \advance\count255 by 1 \repeat
+
+\XeTeXinterchartoks 0 \CJKclass = {\cjkfont}
+\XeTeXinterchartoks \CJKclass 0 = {\rmfamily}
+\XeTeXinterchartoks \CJKclass 255 = {\rmfamily}
+\XeTeXinterchartoks 255 \CJKclass = {\cjkfont}
+\XeTeXinterchartoks \CJKclass \CJKclass = {}
+\XeTeXlinebreaklocale "zh"
+\XeTeXlinebreakskip = 0pt plus 1pt minus 0.1pt
+
+% ===== 页面 =====
+\usepackage[left=3.17cm, right=3.17cm, top=2.54cm, bottom=2.54cm, headheight=14pt]{geometry}
+\usepackage{setspace}\onehalfspacing
+\tolerance=2000\emergencystretch=2em\hbadness=2000
+\usepackage{microtype}\usepackage{xurl}
+\usepackage[hidelinks,colorlinks=true,linkcolor=black,citecolor=black,urlcolor=blue]{hyperref}
+\usepackage{indentfirst}\setlength{\parindent}{2em}\setlength{\parskip}{0pt}
+\usepackage{booktabs}\usepackage{array}
+\usepackage{amsmath,amssymb}
+\usepackage{caption}\usepackage{float}
+\usepackage{enumitem}
+
+% ===== 标题格式 =====
+\usepackage{titlesec}
+\titleformat{\section}{\centering\bfseries\cjkfont\fontsize{15pt}{20pt}\selectfont}{\thesection}{0.5em}{}
+\titlespacing*{\section}{0pt}{18pt}{10pt}
+\titleformat{\subsection}{\bfseries\cjkfont\fontsize{13pt}{17pt}\selectfont}{\thesubsection}{0.5em}{}
+\titlespacing*{\subsection}{0pt}{12pt}{6pt}
+\titleformat{\subsubsection}{\bfseries\cjkfont\fontsize{12pt}{16pt}\selectfont}{\thesubsubsection}{0.5em}{}
+\titlespacing*{\subsubsection}{0pt}{8pt}{4pt}
+
+\captionsetup[table]{labelsep=space, font={small}, justification=centering, labelfont={bf}}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\fancyfoot[C]{\thepage}
+
+\newcommand{\citemark}[1]{\textsuperscript{[#1]}}
+
+\begin{document}
+
+\thispagestyle{fancy}
+
+\begin{center}
+{\bfseries\cjkfont\fontsize{18pt}{24pt}\selectfont 编码/解码视域下中国网络文学跨文化传播研究}\\[4pt]
+{\cjkfont\fontsize{13pt}{18pt}\selectfont 基于BERTopic主题建模的实证分析}
+\vspace{10pt}
+
+{\cjkfont\fontsize{12pt}{16pt}\selectfont 唐\quad 琦}\\[2pt]
+{\small\cjkfont （外国语学院，英语笔译专业）}
+\end{center}
+
+\vspace{8pt}
+
+\noindent{\bfseries\cjkfont 摘\quad 要：}{\cjkfont 中国网络文学的跨文化传播亟需传播学与区域研究的深度阐释。本文以霍尔编码/解码理论为框架，运用}BERTopic{\cjkfont 主题建模对30部小说构成的跨文化语料库进行实证分析，发现中方网文英译本与英语科幻文本在话语编码层面呈现高度结构性差异，}BERT{\cjkfont 分类准确率达99.99\%，49个有效主题的不对称分布揭示了文化符码跨区域流通的三种命运。本文将翻译定位为跨文化传播的工具与表征，将翻译接受操作化为传播效果的量化指标，着重探讨编码结构的可传通性边界、平台的再编码中介功能及受众解码中文化折扣与阐释增值的辩证关系，提出编码、平台、社群三层协同传播模型，揭示文化意义经由编码、再编码与解码形成的循环结构。本文数据更新至2024年度，结合网络文学出海市场规模超50亿元、海外活跃用户约2亿人的最新产业态势展开讨论。}
+
+\vspace{4pt}
+\noindent{\bfseries\cjkfont 关键词：}{\cjkfont 跨文化传播；编码/解码理论；中国网络文学；区域研究；翻译接受；数字平台}
+
+\vspace{4pt}
+\noindent{\small\cjkfont 中图分类号：}{\small G206；H059}\qquad{\small\cjkfont 文献标识码：}{\small A}
+
+\vspace{10pt}
+
+\begin{center}
+{\bfseries\fontsize{13pt}{17pt}\selectfont A Study on the Cross-Cultural Communication of Chinese\\Online Literature from the Encoding/Decoding Perspective}
+\vspace{4pt}
+
+{\small TANG Qi}\\
+{\small\itshape (School of Foreign Languages)}
+\end{center}
+
+\vspace{4pt}
+\noindent{\small\textbf{Abstract:} Grounded in Stuart Hall's encoding/decoding theory, this study employs BERTopic topic modeling to analyze a cross-cultural corpus of 30 novels, revealing highly asymmetric discourse encoding between translated Chinese web fiction and Anglophone SF (BERT accuracy: 99.99\%). Translation is positioned as the instrument and manifestation of cross-cultural communication, and translation reception is operationalized as a quantitative indicator of communicative efficacy. A Coding--Platform--Community tri-layer synergy model is proposed, demonstrating that cultural meaning circulates through encoding, re-encoding, and decoding in a cyclical structure.}
+
+\vspace{2pt}
+\noindent{\small\textbf{Key words:} cross-cultural communication; encoding/decoding theory; Chinese Internet Literature; area studies; translation reception; digital platforms}
+
+\vspace{12pt}
+
+% ======================================================================
+\section{引言}
+% ======================================================================
+
+中国网络文学自1998年发端以来，现已与好莱坞电影、日本动漫及韩国影视剧并列为全球四大文化现象\citemark{1}。截至2024年底，其海外市场规模超50亿元，出海作品总量达75.09万部，海外用户规模超3.5亿，覆盖全球200多个国家和地区\citemark{2}。此现象的本质是一场大规模跨文化传播实践，文化符号从中国语境编码而成的意义系统经由翻译在不同文化区域中被解码、协商与再生产。
+
+然而对此现象的理论阐释存在明显的学科壁垒。传播学聚焦宏观路径效果评估却难及意义转换的微观机制，跨文化研究关注文化差异与接受偏移却缺乏将编码结构与解码实践整合为连贯框架的方法论支撑。邓凯方等指出现有研究多从文学作品本身进行质性分析\citemark{5}；庞华和张欣彤基于BERTopic模型的YouTube平台数据研究亦揭示，当前数字传播视域下中华文化海外传播研究亟需从主题演化走向认知图式的深层重构\citemark{6}。更关键的是，翻译在跨文化传播中的角色往往被简化为语言转换的技术环节，未被充分认识为文化意义跨区域流通的核心表征行为。
+
+基于此，本文以跨文化传播为理论主轴，将翻译定位为传播工具、将翻译接受操作化为传播效果的量化指标，在编码/解码框架内建构贯通文化编码、平台中介与受众解码的分析框架。具体研究问题如下：在编码维度上，文化意义在跨区域传播中的编码结构经历了怎样的转换，其可传通性边界何在；在中介维度上，数字平台如何作为再编码中介重塑意义结构与受众解码路径；在整合维度上，编码、再编码与解码如何在网络文学的跨文化流通中形成协同机制。本文共分五章，第一章提出问题意识，第二章构建理论基础，第三章报告实证发现，第四章展开理论讨论，第五章总结贡献与局限。
+
+% ======================================================================
+\section{理论基础与文献综述}
+% ======================================================================
+
+\subsection{编码/解码理论与跨文化传播的适配性}
+
+霍尔于1973年发表《电视话语的编码与解码》，将传播过程概念化为生产、流通、消费、再生产四环节的开放循环，颠覆了发送者到信息再到接收者的线性模型\citemark{10,11}。其核心洞见在于，文化文本的意义并非天然内嵌于符号之中，而是在编码与解码两个相对独立的意义实践中分别建构\citemark{12}。编码者在特定知识框架中将意义组织为优势话语形式，解码者则在自身社会位置与文化经验制约下进行阐释\citemark{13,14}。由于二者分属不同意义时刻，意义传达遂成为争夺、协商乃至对抗的动态过程\citemark{15}。霍尔据此提出三种解码立场：主导霸权式解码完全在优势符码内阐释，协商式解码宏观认可但局部修正，对抗式解码以替代性框架重新解读\citemark{15,16}。
+
+该理论对跨文化传播研究的特殊解释力在于，它从根本上确立了传播的非对称性与受众的能动性。在跨文化语境中，编码者与解码者不仅分属不同的意义时刻，更分属不同的文化系统，意义的结构性不对称因此被进一步放大。Balog-Way和McComas指出，将传播化约为单向信息传递正是霍尔所批判的错误\citemark{16}。在数字平台时代，Song将模型扩展为DLAE模型，揭示算法中介lincoding与平台可供性affordecoding作为编码与解码之间新中介层参与意义分配\citemark{13}；Jensen将框架延伸至人机传播\citemark{14}；Yin将之应用于全球AI与地方语言的互动\citemark{17}。上述拓展证明该理论在不同文化区域间意义流通研究中具有持续的解释力。
+
+三种解码立场直接对应了跨文化传播中受众面对异文化符码时全然接纳、选择性协商与系统性重构三种基本姿态，为后续分析网络文学海外受众的解码实践提供了精确的理论坐标。
+
+\subsection{翻译在跨文化传播中的三重定位}
+
+跨文化传播与翻译研究在本体论层面共享一个根本关切，即符号与意义在跨语境流通中的转换与再建构\citemark{7,8}。李婧萍论证了传播过程中传播者、讯息、受众与翻译过程中译者、文本、读者的严整对应\citemark{7}；熊伟指出跨文化传播经典模式可有效补强翻译理论在宏观语境阐释力上的不足\citemark{8}。本文的理论取向并非学科叠加，而是在跨文化传播的统摄框架下重新定位翻译。
+
+就工具属性而言，翻译是跨文化传播的\textbf{核心工具}。于萍指出霍尔将意义生成视为社会现实向符号转化的实践，语言是涉及符号、物质与情境互动的表征系统\citemark{12}，翻译正是使文化意义跨越语言边界进行流通的基础性传播行为。就符号属性而言，翻译是跨文化传播的\textbf{表征}。翻译策略的选择直接体现了文化编码在跨区域转换中的结构性变化，音译保留与归化替换等策略本身即构成编码转换路径的可观察指标。就效果属性而言，翻译接受是跨文化传播效果的\textbf{量化指标}。受众对译本的认知反应、情感态度与行为倾向构成传播成效的可操作化测量维度，田丽等构建的认知、态度、行为三层次框架\citemark{30}即以翻译接受为核心。此定位与刘意和席晓兰的环境、翻译、出版、传播、接受五维生态模型\citemark{9}有所呼应，但本文不将翻译视为传播链条中的独立环节，而是将其理解为贯穿跨文化传播全程的底层编码转换机制。
+
+\subsection{中国网络文学跨文化传播的编码、流通与解码}
+
+\subsubsection{编码端：文化专有项的高密度编码}
+
+中国网络文学形成了一套高密度的文化专有项符号体系。张雨轩和韩传喜指出，网络文学的编码过程是创作者依托内化的符码系统将文字符号个性化排列组合\citemark{10}。玄幻小说中斗气、结丹、飞升、修真等术语不仅是叙事元素，更编码了特定的身体观、宇宙观与权力想象。付慧青和禹建湘明确提出中国网络科幻通过科幻与玄幻的跨界设定突破了西方科幻的理性主义传统\citemark{52}；王明宪论证了网络玄幻对儒释道文化资源的系统转化\citemark{53}。可见中国网络文学的编码结构深度嵌入于特定区域文化语境之中。
+
+\subsubsection{流通环节：翻译模式的传播学重读}
+
+网络文学对外传播历经三个阶段：2001年起的出版授权阶段、2014年起以Wuxiaworld成立为标志的在线翻译阶段、2018年起以起点国际开放创作为代表的平台本土化运营阶段\citemark{18}，分别对应传统出版业的单向编码输出、粉丝社群驱动的去中心化传播及数字平台再编码中介的系统介入。蒋琤琤和杨昊指出当前网络文学已进入"全球共创"阶段\citemark{20}；彭红艳和胡安江强调多模态视觉化协同出海的传播格局\citemark{2}；Wu指出网文全球传播在很大程度上依赖粉丝驱动的翻译活动\citemark{19}。2024年行业数据显示约70\%的翻译团队已采用AI与人工结合模式，起点国际新增AI翻译作品超2000部\citemark{21}，此数据本身即是翻译作为传播工具核心地位与技术赋能效应的有力佐证。
+
+\subsubsection{解码端：受众接受的跨区域实证}
+
+殷秀云和林升栋的幻想主题分析发现英文读者将修炼体系嫁接为游戏升级框架，将逆天改命解读为个人英雄主义\citemark{39}，为霍尔三种解码立场的跨文化运作提供了经验证据。田丽等基于Reddit的研究证实海外读者在文本内容层持积极态度，在文化内核层态度显著转向负面\citemark{30}。蒙睿华发现泰国读者将修真理解为魔法，文化专有项呈现文化折扣与异国情调并存的双重效应\citemark{29}。Chen等揭示了《狼图腾》跨语言接受中的显著文化差异，利用大数据情感分析揭示了中国读者与英语读者在解读取向上的显著分殊\citemark{37}。Qiu在对比耽美小说粉丝翻译与官方翻译的接受时指出，粉丝群体在跨媒介语境下更看重翻译忠实度\citemark{36}。这些解码端的实证研究实质构成了跨文化传播效果的系统性测量。
+
+然而现有研究的核心空白在于，编码端的文化结构分析、流通环节的翻译策略研究与解码端的接受效果评估之间缺乏统一理论框架予以贯通。本研究以BERTopic的量化发现为经验锚点、以编码/解码理论为分析框架尝试弥合此空白。
+
+% ======================================================================
+\section{研究方法与核心发现}
+% ======================================================================
+
+本研究构建了包含30部小说的跨文化语料库，其中10部为中方网文英译本、20部为英语科幻小说，总计161,724个文本片段。采用BERTopic主题建模\citemark{41}进行无监督聚类，依次经all-MiniLM-L6-v2嵌入、UMAP降维、HDBSCAN聚类及c-TF-IDF关键词提取四个阶段，同时构建BERT有监督二分类模型验证两类文本可区分度，并叠加RoBERTa情感分析模块\citemark{42,43}。核心发现如下。
+
+在文本可区分度层面，BERT分类准确率达99.99\%，ROC-AUC为1.0000，表明中方网文英译本即使经过语际转换仍保持高度独特的话语编码结构。翻译实现了语言层面的转换，但并未消弭文化层面的编码差异。
+
+在主题分布层面，BERTopic识别出49个有效主题，呈高度不对称的长尾分布。c-TF-IDF关键词分析揭示三类编码模式：以hong、wu、pangu、nuwa等文化专有项音译为代表的音译保留型，以universe、emperor、sacred、sword等英语词汇对中国概念进行归化翻译的归化替换型，以及以witches、sergeant、lieutenant等英语科幻独有词汇为代表的西方文本独立编码型。三类模式分别映射文化符码跨区域传播中保留、转化与不可通约三种命运。
+
+在情感维度上，情感分析显示两类文本共享以冲突为核心的负面情感基调，具有跨文化一致性，为情感共振提供了文本结构层面的证据。
+
+以上三项发现构成后续理论讨论的经验基础。
+
+% ======================================================================
+\section{理论讨论}
+% ======================================================================
+
+\subsection{编码结构的持久性与可传通性边界}
+
+99.99\%的分类准确率揭示了跨文化传播中的一个核心事实，即翻译改变了符号的表层编码，将中文转换为英文，但未能改变话语的深层编码，亦即文化意义的组织方式。c-TF-IDF关键词分析提供了具体证据：universe、emperor、sacred等虽已是英语词汇，但其在中方网文英译本中的高频组合模式如universe-emperor-treasure、sacred-sword-ji等构成了一套独特的话语语法，与英语科幻中sergeant-lieutenant-officer截然不同。这意味着跨文化传播中的意义流通在编码结构制约下形成了特定的可传通性边界，并非线性模型所假设的透明传递。
+
+三类编码模式各有其跨文化传播机制。音译保留型代表不透明传递，符号进入目标文化符号空间但意义对受众封闭，须经副文本或社群阐释完成解码。贾晓英和高田追溯了《道德经》英译中策略从宗教化改写到文化保留的演变\citemark{44}；何家骏指出保留异质性本身即是抵抗本土同化的思想策略\citemark{45}。此种不透明传递恰恰是维持文化多样性的传播机制。归化替换型代表重新编码，降低了受众解码门槛但带来文化意涵扁平化风险。师亦超在论述文学传播共情机制时指出译者应遵循情感、认知、行动路径推动共情\citemark{46}，归化替换在认知环节造成了信息折损但在情感环节降低了传播阻力。西方文本独立编码型揭示了两个文化区域之间不可通约的话语领域，正是这种不可通约性使跨文化传播成为意义协商的文化实践而非信息传递的技术操作。宋宝平呼吁跨文化传播应走向深度对话\citemark{47}，本研究表明编码结构的区域性差异恰恰是此种对话得以展开的前提。
+
+\subsection{解码端的传播效果：文化折扣与阐释增值的辩证}
+
+BERTopic揭示的主题不对称分布从文本结构层面映射了目标区域受众面临的解码挑战。将翻译接受操作化为传播效果指标，霍尔三种解码立场在实证中获得了验证。
+
+殷秀云和林升栋的研究\citemark{39}提供了关键证据。部分海外读者采取主导式解码，完全沉浸于译文建构的文化框架中，田丽等所发现的海外读者被陌生东方文化符号吸引的现象\citemark{30}即为表征；情感分析所揭示的两类文本共享的负面情感基调表明叙事冲突的情感共振是实现此种解码的关键中介。部分读者采取协商式解码，蒙睿华所描述的泰国读者将修真理解为魔法\citemark{29}即为典案，宏观接纳修炼叙事框架而微观以自身区域文化中最近似概念替换道家修炼哲学，此非误读而是受众基于自身认知图式的积极意义建构。部分读者采取对抗式解码，将修炼体系重编码为游戏升级框架\citemark{39}，以全然不同的参照框架组织文本意义。田丽等的统计数据进一步精确揭示了此种分层，文本内容层读者对中国文化态度接近中立，均值为0.005，文化内核层明显偏向负面，均值为$-$0.422，差异显著，$p < 0.001$\citemark{30}。
+
+传统跨文化传播研究倾向于将文化信息流失视为纯粹的文化折扣。然而文化折扣与异国情调吸引力实为同一硬币之两面\citemark{29,30}，归化替换产生的文化折损为受众提供了低门槛解码入口，音译保留的文化异质性则为受众提供了新奇体验的吸引力。Ni指出仙侠题材中气的宇宙观常被重构为后世俗主义的技术路径，与现代科学理性的共振构成了跨区域语义的认知桥梁\citemark{48}。可见翻译接受并非文化信息的单向折损，而是折扣与增值并行的辩证过程，受众在解码中丢失部分源文化编码却获得了新的阐释空间，如将修炼重编码为自我提升的隐喻。此种阐释增值恰为霍尔所说的意义再生产，解码者的阐释实践不仅消费文本意义更生产新的文化意义，成为新一轮编码的社会语境。Chen等对《狼图腾》跨语言分析中揭示的中国读者政治批判性解读与英语读者叙事新奇性体验之差异\citemark{37}正为此种阐释增值的又一佐证。由此可知，跨文化传播效果不应仅以信息保真度衡量，更应关注意义在不同区域中的再生产能力。
+
+\subsection{三层协同传播模型的理论建构}
+
+\subsubsection{平台作为再编码中介}
+
+数字平台并非中立的信息传输管道，而是积极参与意义建构的再编码中介。Ren的研究揭示了不同平台标签系统对中国叙事的再编码\citemark{27}，Webnovel的用户生成标签如male protagonist、weak to strong与Novel Updates对接亚洲文化类型的标签如Xianxia、Xuanhuan构成了两套不同的再编码体系。本研究的c-TF-IDF分析表明翻译层面的编码选择直接规约了平台可供操作的再编码空间，归化替换型关键词为归化式再编码提供了文本基础，音译保留型关键词为异化式再编码提供了锚点。Song的DLAE模型\citemark{13}在此获得了跨文化传播的具体解释，算法推荐、标签归类与界面设计共同构成介于翻译编码与受众解码之间的再编码层。Tang等揭示的排行榜机制与粉丝投票联盟\citemark{28}进一步表明平台再编码从根本上重塑了文本的跨文化可见性结构。
+
+\subsubsection{粉丝社群的集体解码与阐释基础设施}
+
+粉丝社群在跨文化传播中既是解码主体又是新一轮编码的生产者。陈琪从媒介视角指出网络文学互动叙事中读者介入已成为文本生产的内在环节\citemark{25}；阮诗芸对《天官赐福》英译传播的追踪亦证实评论区互动直接影响文本面貌与传播命运\citemark{26}。社群通过术语表、文化注释和讨论帖将分散的个体解码聚合为稳定共识，构建了支撑跨文化解码的阐释基础设施。从编码/解码理论看，粉丝社群实质扮演二级再编码者角色，当新读者询问cultivation的含义时，老读者提供的类比无论是游戏升级还是道家哲学即是在引导解码立场选择。Qiu的研究揭示粉丝对忠实度的要求\citemark{36}、田雪君评述的接受研究发现读者评论直接介入文本意义的再生产\citemark{55}，均为此种反向反馈的典型例证。Li提出网络文学在海外构建了一种后美学范式\citemark{24}，此范式的建构正依赖社群阐释基础设施；李牧和谢文娟主张从语言翻译走向文化翻译\citemark{49}，在数字时代此功能已从译者个人扩展至整个粉丝社群。
+
+\subsubsection{三层模型}
+
+综合上述，本文提出编码、平台、社群三层协同传播模型。\textbf{文化编码层}：源文化意义经由翻译实现跨语言转换，翻译文本的话语形态构成编码转换的可观察表征，核心问题为可传通性边界。\textbf{平台再编码层}：数字平台通过标签系统与推荐算法对译文进行二次编码，重塑文化意义在目标区域的可见性与受众解码路径，核心问题为再编码的意义政治。\textbf{社群解码层}：粉丝社群通过评论互动与术语共建进行集体解码，翻译接受作为传播效果量化指标在此获得可操作化测量，核心问题为解码的集体化与意义再生产。三层持续互动，社群反馈反向影响翻译策略与平台设计，与霍尔生产、流通、消费、再生产的开放循环高度契合，表明跨文化传播并非编码到解码的单向过程，而是意义在不同文化区域间持续流通、协商与再生产的循环结构。
+
+% ======================================================================
+\section{结论}
+% ======================================================================
+
+本研究通过将霍尔编码/解码理论与BERTopic计算方法相结合，从跨文化传播视角审视中国网络文学的意义跨区域流通机制，获得以下发现。
+
+就编码结构而言，跨文化传播存在可传通性边界。BERT分类准确率99.99\%与主题分布的高度不对称性表明，翻译实现了语言编码转换但无法消弭深层文化编码结构，编码与解码之间的结构性不对称是跨文化传播的内在属性。
+
+就传播效果而言，跨文化传播效果是文化折扣与阐释增值并行的辩证过程。三种解码立场在翻译接受中分别通过情感共振、概念嫁接与框架置换得到验证，受众能动性在意义跨区域流通中发挥核心作用。
+
+就传播机制而言，跨文化传播是编码、再编码、解码的多层循环结构。三层协同模型揭示了翻译编码、平台再编码与社群集体解码的持续互动。
+
+在理论贡献层面，本研究拓展了编码/解码理论在跨文化传播研究中的适用范围。霍尔原初模型主要针对单一文化内部的媒体传播，本研究展示了该理论在跨文化、跨区域意义流通分析中同样具有解释力，翻译被理解为再编码实践，平台被理解为新型再编码中介，粉丝社群的集体阐释被理解为去中心化的社群解码。此外，本研究提出了将翻译定位为传播工具与表征、将翻译接受操作化为传播效果量化指标的理论路径，并为文化编码结构、可传通性边界等概念提供了可操作化的计算指标，回应了邓凯方等\citemark{5}和庞华等\citemark{6}关于加强计算方法与量化研究的呼吁。
+
+在实践层面，传播策略应从文化专有项逐一处理提升为编码框架的系统性设计，在音译保留与归化替换之间动态平衡。平台建设应自觉认识标签系统的再编码功能，构建兼含归化式分类与异化式分类的多层次标签体系。社群运营应发挥粉丝社群的阐释基础设施功能；2024年约70\%的翻译团队已采用AI与人工结合模式\citemark{50}，AI辅助文化注释系统有望成为未来社群阐释基础设施的重要组成部分。
+
+本研究的局限在于，中方语料仅含10部网文英译本，区域代表性有限；语料全为英译本，无法与中文原文对比量化语义损失；解码模式讨论基于文献整合而非直接受众调查。未来应构建中英平行语料库量化文化信息在跨区域传播中的损耗，采用接受实验验证三种解码模式在不同文化区域中的分布差异，并关注AI翻译技术迭代对编码转换效率与文化适配度的深层影响\citemark{50,51}。
+
+% ======================================================================
+% 参考文献
+% ======================================================================
+
+\vspace{12pt}
+\begin{center}{\bfseries\cjkfont\fontsize{13pt}{17pt}\selectfont 参考文献}\end{center}
+\vspace{4pt}
+
+{%
+\XeTeXinterchartokenstate=0%
+
+\noindent [1] {\cjkfont 黄桂萍, 梁朝露. 互鉴·转型·共生：跨文化视角下的网络文学国际传播[J]. 中国出版, 2025(3): 49--53.}
+
+\noindent [2] {\cjkfont 彭红艳, 胡安江. 中国网络文学国际传播的视觉化研究[J]. 上海交通大学学报（哲学社会科学版）, 2024, 32(1): 68--80.}
+
+\noindent [5] {\cjkfont 邓凯方, 邓云华. 基于}BERTopic{\cjkfont 模型的《狼图腾》英译本传播效果研究[J]. 外语电化教学, 2025(2): 70--77.}
+
+\noindent [6] {\cjkfont 庞华, 张欣彤. 数字传播视域下中华文化海外传播的主题演化与认知图式重构——基于}BERTopic{\cjkfont 模型的}YouTube{\cjkfont 平台数据研究[J/OL]. 新媒体与社会, 2025.}
+
+\noindent [7] {\cjkfont 李婧萍. 翻译传播学的理论建构——翻译学与传播学互识互补的可行性[J]. 2025.}
+
+\noindent [8] {\cjkfont 熊伟. 跨文化传播模式引入译学研究[J]. 2025.}
+
+\noindent [9] {\cjkfont 刘意, 席晓兰. 翻译生态学与跨文化传播五维生态传播模型[J]. 2025.}
+
+\noindent [10] {\cjkfont 张雨轩, 韩传喜. 媒介融合时代网络文学的编码与解码[J]. 当代作家评论, 2021(1): 39--44.}
+
+\noindent [11] {\cjkfont 焦学弢. 编码与解码视域下的弹幕文化研究[J]. 新闻文化建设, 2023: 1--4.}
+
+\noindent [12] {\cjkfont 于萍. 斯图尔特·霍尔"文化表征"理论的意义生成与话语权力[J]. 外语学刊, 2024(3): 91--98.}
+
+\noindent [13] Song D. Hall's encoding/decoding model revisited in the digital platform age[J]. Information, Communication \& Society, 2025: 1--19.
+
+\noindent [14] Jensen K B. Encoding and decoding in the human--machine discourse[J]. Communication Theory, 2025: 1--12.
+
+\noindent [15] Pillai P. Rereading Stuart Hall's encoding/decoding model[J]. Communication Theory, 1992, 2(3): 221--233.
+
+\noindent [16] Balog-Way D, McComas K. Unpacking the risk of misinformation: a communication-based critique[J]. Risk Analysis, 2025.
+
+\noindent [17] Yin F Y. Encoding/decoding in artificial intelligence: global AI and local languages[J]. Media, Culture \& Society, 2025: 1--11.
+
+\noindent [18] {\cjkfont 何弘. "网文出海"的现状、问题及对策[J]. 人民论坛, 2022(16): 104--106.}
+
+\noindent [19] Wu Y. Digital globalization, fan culture and transmedia storytelling[J]. Critical Arts, 2023, 37(4): 25--38.
+
+\noindent [20] {\cjkfont 蒋琤琤, 杨昊. 新时期我国网络文学出海竞争与发展策略研究[J]. 杭州电子科技大学学报（社会科学版）, 2025.}
+
+\noindent [21] {\cjkfont 《2024中国网络文学出海趋势报告》[R]. 中国社会科学院文学研究所, 2024.}
+
+\noindent [24] Li Z. Cross-culture, translation and post-aesthetics: Chinese online literature in/as world literature[J]. World Literature Studies, 2023, 15(3): 45--61.
+
+\noindent [25] {\cjkfont 陈琪. 网络文学互动叙事的媒介视角、文本空间和叙事实践[J]. 出版科学, 2025, 33(5): 32--44.}
+
+\noindent [26] {\cjkfont 阮诗芸. 《天官赐福》及其动漫衍生的英语世界传播效果研究[J]. 2025.}
+
+\noindent [27] Ren X. Mapping globalised Chinese webnovels[J]. International Journal of Cultural Studies, 2024, 27(3): 368--386.
+
+\noindent [28] Tang M C, Jung Y E, Li Y L. Exploring the sociotechnical system of Chinese internet literature online forums[J]. Online Information Review, 2023, 47(3): 505--521.
+
+\noindent [29] {\cjkfont 蒙睿华. 读者凝视与权力重构：中国网络文学东南亚跨文化传播策略[J]. 曲靖师范学院学报, 2025, 44(5): 26--33.}
+
+\noindent [30] {\cjkfont 田丽, 满运玖. 花下刺：中国网络文学跨文化传播效果研究[J]. 出版科学, 2025, 33(3): 96--107.}
+
+\noindent [36] Qiu J. The reception of fan and official translations of a Chinese Internet novel[J/OL]. DOI: 10.1556/084.2025.01126.
+
+\noindent [37] Chen R, Zhong Z, Yuan X, et al. Two sides of the same coin? Cross-linguistic sentiment comparison of \textit{Wolf Totem}[J]. Digital Scholarship in the Humanities, 2025, 40(1): 40--53.
+
+\noindent [39] {\cjkfont 殷秀云, 林升栋. 中国网络文学海外传播——以东方玄幻小说为例[J]. 东南学术, 2025(1): 237--246.}
+
+\noindent [41] Grootendorst M. BERTopic: Neural topic modeling with a class-based TF-IDF procedure[J]. arXiv:2203.05794, 2022.
+
+\noindent [42] Egger R, Yu J. A topic modeling comparison between LDA, NMF, Top2Vec, and BERTopic[J]. Frontiers in Sociology, 2022, 7: 886498.
+
+\noindent [43] Blei D M, Ng A Y, Jordan M I. Latent Dirichlet allocation[J]. Journal of Machine Learning Research, 2003, 3: 993--1022.
+
+\noindent [44] {\cjkfont 贾晓英, 高田. 《道德经》英译历程研究[J]. 2025.}
+
+\noindent [45] {\cjkfont 何家骏. 鲁迅"硬译"观与佛经翻译传统研究[J]. 2026.}
+
+\noindent [46] {\cjkfont 师亦超. 文学传播共情机制研究[J]. 2024.}
+
+\noindent [47] {\cjkfont 宋宝平. 《额尔古纳河右岸》跨文化传播研究[J]. 2024.}
+
+\noindent [48] Ni Z. Religion, secularism, and postsecularism in Chinese Internet literature[J]. Literature \& Theology, 2024, 38(2): 165--172.
+
+\noindent [49] {\cjkfont 李牧, 谢文娟. 非遗文化翻译研究[J]. 2025.}
+
+\noindent [50] {\cjkfont 《2024年度中国网络文学发展报告》[R]. 中国音像与数字出版协会, 2025.}
+
+\noindent [51] Yang Z. An overview of studies on the dissemination and reception of \textit{Dream of the Red Chamber} in Malaysia[J]. 2025: 1--11.
+
+\noindent [52] {\cjkfont 付慧青, 禹建湘. 作为跨界的符号：论中国网络科幻小说的文体意义[J]. 民族文学研究, 2025(5): 178--188.}
+
+\noindent [53] {\cjkfont 王明宪. 网络玄幻小说：中国本土的奇幻创意故事[J]. 文艺论坛, 2025(2): 45--54.}
+
+\noindent [55] {\cjkfont 田雪君. 网络文学跨文化传播热潮下的学术追踪——评《英译中国网络小说的接受研究》[J]. 出版广角, 2025.}
+
+}
+
+\end{document}
